@@ -1,13 +1,10 @@
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
 import { configureStore } from "@reduxjs/toolkit";
-
-// import { workSlice } from './work';
-// import { searchSlice } from "./search"
+import { projectsSlice } from './projects/projectsSlice';
 
 export const store = configureStore({
     reducer: {
-        // work: workSlice.reducer,
-        // search: searchSlice.reducer,
+        projects: projectsSlice.reducer,
     }
 })
 

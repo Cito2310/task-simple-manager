@@ -8,6 +8,7 @@ interface ProjectsState {
     status: {
         existProjects: boolean;
         isLoading: boolean;
+        loadingInitialData: boolean;
     }
 }
 
@@ -16,6 +17,7 @@ const initialState: ProjectsState = {
     status: {
         existProjects: false,
         isLoading: false,
+        loadingInitialData: false,
     }
 }
 
@@ -23,6 +25,15 @@ export const projectsSlice = createSlice({
     name: "projects",
     initialState,
     reducers: {
+
+
+
+
+        loadingInitialData: (state, action: {payload: Project[]}) => {
+            state.projects = action.payload;
+            state.status.loadingInitialData = true;
+            if ( action.payload.length > 0 ) state.status.existProjects = true;
+        },
 
 
 
@@ -75,6 +86,7 @@ export const projectsSlice = createSlice({
 
 
 export const {
+    loadingInitialData,
     createProject,
     deleteProject,
     editTasks
