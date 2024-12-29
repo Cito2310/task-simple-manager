@@ -1,6 +1,6 @@
 import { useEffect } from "react"
-import { useAppDispatch, useAppSelector } from "../store"
-import { loadingInitialData } from "../projects/projectsSlice";
+import { useAppDispatch, useAppSelector } from "../store/store"
+import { loadingInitialData } from "../store/projects/projectsSlice";
 
 export const useManagerData = () => {
     const keyLocalStorage = "data-projects";
