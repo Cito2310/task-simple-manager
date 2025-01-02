@@ -1,0 +1,1 @@
+export type Modal = "create-task" | "edit-task" | "create-project" | "none"
