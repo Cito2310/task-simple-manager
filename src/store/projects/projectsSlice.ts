@@ -41,14 +41,9 @@ export const projectsSlice = createSlice({
         createProject: (state, action: { payload: {
             newTitle: string;
         } }) => {
-            let copyState = structuredClone(state);
-
-
-            copyState.projects.push({ id: uuidv4(), name: action.payload.newTitle, tasks: [] });
+            state.projects.push({ id: uuidv4(), name: action.payload.newTitle, tasks: [] });
 
             if ( state.projects.length === 1 ) state.status.existProjects = true;
-
-            state = copyState;
         },
 
 
@@ -57,13 +52,9 @@ export const projectsSlice = createSlice({
         deleteProject: (state, action: { payload: {
             id: string;
         } }) => {
-            let copyState = structuredClone(state);
+            state.projects = state.projects.filter( project => project.id !== action.payload.id );
 
-            copyState.projects = copyState.projects.filter( project => project.id !== action.payload.id );
-
-            if ( copyState.projects.length === 0 ) copyState.status.existProjects = false;
-
-            state = copyState;
+            if ( state.projects.length === 0 ) state.status.existProjects = false;
         },
 
 
