@@ -6,7 +6,8 @@ export default {
       colors: {
         ring: "#999999",
         primary: "#18181b",
-        background: "#ffffff"
+        background: "#ffffff",
+        "text-foreground": "#7d7d7d"
       },
       fontFamily: {
         "sans": ["Geist"],

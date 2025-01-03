@@ -5,6 +5,7 @@ import { Task } from '../../../types/task';
 
 interface ProjectsState {
     projects: Project[];
+    currentProject: Project | null;
     status: {
         existProjects: boolean;
         isLoading: boolean;
@@ -14,6 +15,7 @@ interface ProjectsState {
 
 const initialState: ProjectsState = {
     projects: [],
+    currentProject: null,
     status: {
         existProjects: false,
         isLoading: false,
@@ -25,6 +27,14 @@ export const projectsSlice = createSlice({
     name: "projects",
     initialState,
     reducers: {
+
+
+
+
+        setCurrentProject: (state, action: {payload: string}) => {
+            const findProject = state.projects.find( project => project.id === action.payload );
+            state.currentProject = findProject || null;
+        },
 
 
 
@@ -80,6 +90,7 @@ export const {
     loadingInitialData,
     createProject,
     deleteProject,
-    editTasks
+    editTasks,
+    setCurrentProject
 
 } = projectsSlice.actions;

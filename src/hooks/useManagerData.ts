@@ -11,6 +11,7 @@ export const useManagerData = () => {
         // Este codigo verifica si no se cargo los datos iniciales para cargarlo
         if ( status.loadingInitialData === false ) {
             const dataRaw = localStorage.getItem(keyLocalStorage);
+            if (dataRaw === null) dispatch( loadingInitialData([]) )
             if (dataRaw !== null) dispatch( loadingInitialData( JSON.parse(dataRaw) ) );
         }
     }, [])
