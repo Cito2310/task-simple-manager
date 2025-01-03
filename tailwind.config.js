@@ -7,7 +7,9 @@ export default {
         ring: "#999999",
         primary: "#18181b",
         background: "#ffffff",
-        "text-foreground": "#7d7d7d"
+        input: "#e4e4e7",
+        "primary-foreground": "#fafafa",
+        "text-foreground": "#7d7d7d",
       },
       fontFamily: {
         "sans": ["Geist"],
