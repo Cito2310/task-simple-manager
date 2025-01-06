@@ -3,22 +3,26 @@ import { useAppDispatch, useAppSelector } from "../store/store"
 import { loadingInitialData } from "../store/projects/projectsSlice";
 
 export const useManagerData = () => {
-    const keyLocalStorage = "data-projects";
+    const keyDataProjects = "data-projects";
+    const keyLastProject = "last-project";
     const dispatch = useAppDispatch();
-    const { projects, status } = useAppSelector(state => state.projects);
+    const { projects, status, currentProject } = useAppSelector(state => state.projects);
 
     useEffect(() => {
         // Este codigo verifica si no se cargo los datos iniciales para cargarlo
         if ( status.loadingInitialData === false ) {
-            const dataRaw = localStorage.getItem(keyLocalStorage);
-            if (dataRaw === null) dispatch( loadingInitialData([]) )
-            if (dataRaw !== null) dispatch( loadingInitialData( JSON.parse(dataRaw) ) );
+            const dataRaw = localStorage.getItem(keyDataProjects);
+            const dataCurrentRaw = localStorage.getItem(keyLastProject);
+            if (dataRaw === null) dispatch( loadingInitialData({ currentProject: null, projects: [] }) )
+            if (dataRaw !== null) dispatch( loadingInitialData({ currentProject:JSON.parse(dataCurrentRaw || "null"), projects:JSON.parse(dataRaw) }) );
         }
     }, [])
 
     useEffect(() => {
+        console.log("Se activo este ")
         // Este codigo verifica si ya se cargo los datos iniciales en projects para empezar a guardar cada vez que se modifique
         // Evita el error de que al iniciar la aplicacion se guarde en el LocalStorage el state vacio inicial
-        if ( status.loadingInitialData === true ) localStorage.setItem(keyLocalStorage, JSON.stringify(projects));
-    }, [projects])
+        if ( status.loadingInitialData === true ) localStorage.setItem(keyDataProjects, JSON.stringify(projects));
+        if ( status.loadingInitialData === true ) localStorage.setItem(keyLastProject, JSON.stringify(currentProject));
+    }, [projects || currentProject])
 }

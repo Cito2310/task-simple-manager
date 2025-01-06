@@ -39,10 +39,11 @@ export const projectsSlice = createSlice({
 
 
 
-        loadingInitialData: (state, action: {payload: Project[]}) => {
-            state.projects = action.payload;
+        loadingInitialData: (state, action: {payload: {projects: Project[], currentProject: Project | null}}) => {
+            state.projects = action.payload.projects;
+            state.currentProject = action.payload.currentProject;
             state.status.loadingInitialData = true;
-            if ( action.payload.length > 0 ) state.status.existProjects = true;
+            if ( action.payload.projects.length > 0 ) state.status.existProjects = true;
         },
 
 
@@ -78,7 +79,26 @@ export const projectsSlice = createSlice({
                 project => project.id === action.payload.idProject
             );
 
+            state.currentProject!.tasks = action.payload.tasks;
             state.projects[projectSelectedIndex].tasks = action.payload.tasks;
+        },
+
+
+
+
+        editTaskWithId: (state, action: { payload: {
+            idProject: string;
+            idTask: string;
+            newTask: Task;
+        } }) => {
+            let projectSelect = state.projects.find( project => project.id === action.payload.idProject );
+
+            if (projectSelect) {
+                const indexTask = projectSelect.tasks.findIndex( task => task.id === action.payload.idTask );
+                projectSelect.tasks[indexTask] = action.payload.newTask;
+            }
+
+            state.currentProject = projectSelect || null;
         }
 
     }
@@ -91,6 +111,7 @@ export const {
     createProject,
     deleteProject,
     editTasks,
-    setCurrentProject
+    setCurrentProject,
+    editTaskWithId,
 
 } = projectsSlice.actions;
