@@ -8,12 +8,14 @@ import { useAppDispatch, useAppSelector } from "./store/store"
 import { CardTask } from "./components/CardTask";
 import { changeModal } from "./store/projects/modalSlice";
 import { filterTasks } from "./helpers/filterTasks";
+import { ModalEditTask } from "./components/ModalEditTask";
+import { ModalDeleteTask } from "./components/ModalDeleteTask";
 
 function App() {
   useManagerData();
   const { currentModal } = useAppSelector( state => state.modal);
   const [filterState, setFilterState] = useState<"active" | "all" | "complete">("all");
-  const { currentProject } = useAppSelector( state => state.projects )
+  const { currentProject, selectedTask } = useAppSelector( state => state.projects )
   const dispatch = useAppDispatch();
 
   const onModalCreateTask = () => dispatch(changeModal("create-task"));
@@ -40,6 +42,8 @@ function App() {
 
       { currentModal === "create-project" && <ModalCreateProject/> }
       { currentModal === "create-task" && <ModalCreateTask project={currentProject!}/> }
+      { currentModal === "edit-task" && <ModalEditTask project={currentProject!} selectedTask={selectedTask!}/> }
+      { currentModal === "delete-task" && <ModalDeleteTask project={currentProject!} selectedTask={selectedTask!}/> }
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import { Task } from "../../types/task"
-import { editTaskWithId } from "../store/projects/projectsSlice";
+import { changeModal } from "../store/projects/modalSlice";
+import { editTaskWithId, setSelectedTask } from "../store/projects/projectsSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { BadgeTask } from "./cardTask/BadgeTask";
 import { ButtonCheck } from "./cardTask/ButtonCheck"
@@ -25,8 +26,18 @@ export const CardTask = ({ task }: props) => {
             // @ts-ignore
             newTask: {...task, state: nextState[task.state]}
     }) )}
+    const onEdit = () => {
+        dispatch(setSelectedTask( task ));
+        dispatch(changeModal("edit-task"));
+    }
+
+    const onDelete = () => {
+        dispatch(setSelectedTask(task));
+        dispatch(changeModal("delete-task"));
+    }
 
     const { description, state, title } = task;
+
     return (
         <li className="border rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
@@ -35,8 +46,8 @@ export const CardTask = ({ task }: props) => {
                     <span className="font-semibold ">{title}</span>
                 </div>
                 <div>
-                    <ButtonEditTrash type="edit" onClick={console.log}/>
-                    <ButtonEditTrash type="delete" onClick={console.log}/>
+                    <ButtonEditTrash type="edit" onClick={onDelete}/>
+                    <ButtonEditTrash type="delete" onClick={onEdit}/>
                 </div>
             </div>
 

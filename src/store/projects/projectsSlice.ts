@@ -6,6 +6,7 @@ import { Task } from '../../../types/task';
 interface ProjectsState {
     projects: Project[];
     currentProject: Project | null;
+    selectedTask: Task | null;
     status: {
         existProjects: boolean;
         isLoading: boolean;
@@ -16,6 +17,7 @@ interface ProjectsState {
 const initialState: ProjectsState = {
     projects: [],
     currentProject: null,
+    selectedTask: null,
     status: {
         existProjects: false,
         isLoading: false,
@@ -34,6 +36,12 @@ export const projectsSlice = createSlice({
         setCurrentProject: (state, action: {payload: string}) => {
             const findProject = state.projects.find( project => project.id === action.payload );
             state.currentProject = findProject || null;
+        },
+
+
+
+        setSelectedTask: (state, action: {payload: Task}) => {
+            state.selectedTask = action.payload;
         },
 
 
@@ -113,5 +121,6 @@ export const {
     editTasks,
     setCurrentProject,
     editTaskWithId,
+    setSelectedTask,
 
 } = projectsSlice.actions;

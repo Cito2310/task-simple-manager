@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ButtonExit } from "./modal/ButtonExit";
+import { ButtonExit } from "./ButtonExit";
 
 interface props {
     children: JSX.Element | JSX.Element[] | string;
@@ -14,7 +14,7 @@ export const ModalLayout = ({ children, title, onExit }: props) => {
     }, [])
 
     return (<>
-        <div className="w-screen h-screen absolute z-10 top-0 left-0 bg-[#000000d0]"></div>
+        <div className="w-screen h-screen fixed z-10 top-0 left-0 bg-[#000000d0]"></div>
 
         <div className="
         translate-x-[-50%] left-[50%] top-[100px] z-20

@@ -1,1 +1,1 @@
-export type Modal = "create-task" | "edit-task" | "create-project" | "none"
+export type Modal = "create-task" | "edit-task" | "create-project" | "none" | "delete-task"
