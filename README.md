@@ -8,3 +8,5 @@ En las tarjetas de tarea al hacer click en el boton de borrar se debe abrir un m
 
 Crear un customHook para App.tsx
 Crear un nuevo compomente para la seccion de Task y button de App.tsx
+
+Implementar un boton para abrir rapidamente un modal para crear una nueva tarea

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../store/store";
 import { Project } from "../../types/project";
@@ -21,7 +21,6 @@ interface props {
 export const useFormCreateTask = ({ currentProject }: props) => {
     const dispatch = useAppDispatch();
     const { register, handleSubmit } = useForm<formValues>();
-    
     const onExit = () => dispatch(changeModal("none"));
 
     const [priority, setPriority] = useState<PriorityTask>("low");
@@ -41,11 +40,6 @@ export const useFormCreateTask = ({ currentProject }: props) => {
         dispatch( editTasks({ idProject: id, tasks: [...tasks, formatTask] }) );
         onExit();
     }
-
-    useEffect(() => {
-        document.body.style.overflow = "hidden";
-        return () => { document.body.style.overflow = "auto" }
-    }, [])
 
     return {
         register,
