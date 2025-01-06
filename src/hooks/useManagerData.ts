@@ -19,7 +19,6 @@ export const useManagerData = () => {
     }, [])
 
     useEffect(() => {
-        console.log("Se activo este ")
         // Este codigo verifica si ya se cargo los datos iniciales en projects para empezar a guardar cada vez que se modifique
         // Evita el error de que al iniciar la aplicacion se guarde en el LocalStorage el state vacio inicial
         if ( status.loadingInitialData === true ) localStorage.setItem(keyDataProjects, JSON.stringify(projects));

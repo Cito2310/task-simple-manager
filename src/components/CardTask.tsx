@@ -1,7 +1,5 @@
 import { Task } from "../../types/task"
-import { changeModal } from "../store/projects/modalSlice";
-import { editTaskWithId, setSelectedTask } from "../store/projects/projectsSlice";
-import { useAppDispatch, useAppSelector } from "../store/store";
+import { useCardTask } from "../hooks/useCardTask";
 import { BadgeTask } from "./cardTask/BadgeTask";
 import { ButtonCheck } from "./cardTask/ButtonCheck"
 import { ButtonEditTrash } from "./cardTask/ButtonEditTrash";
@@ -11,32 +9,8 @@ interface props {
 }
 
 export const CardTask = ({ task }: props) => {
-    const dispatch = useAppDispatch();
-    const { currentProject } = useAppSelector(state => state.projects)
-    const onChangeState = () => {
-        const nextState = {
-            "not-complete": "in-progress",
-            "in-progress": "complete",
-            "complete": "not-complete"
-        }
-
-        dispatch( editTaskWithId({
-            idProject: currentProject!.id,
-            idTask: task.id,
-            // @ts-ignore
-            newTask: {...task, state: nextState[task.state]}
-    }) )}
-    const onEdit = () => {
-        dispatch(setSelectedTask( task ));
-        dispatch(changeModal("edit-task"));
-    }
-
-    const onDelete = () => {
-        dispatch(setSelectedTask(task));
-        dispatch(changeModal("delete-task"));
-    }
-
-    const { description, state, title } = task;
+    const { onChangeState, onDelete, onEdit } = useCardTask(task);
+    const { state, title, description } = task;
 
     return (
         <li className="border rounded-lg p-4">

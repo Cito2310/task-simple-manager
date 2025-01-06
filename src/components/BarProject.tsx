@@ -1,7 +1,7 @@
 import { changeModal } from "../store/projects/modalSlice";
 import { setCurrentProject } from "../store/projects/projectsSlice";
 import { useAppDispatch, useAppSelector } from "../store/store"
-import { ButtonProject } from "./ButtonProject"
+import { ButtonProject } from "./barProject/ButtonProject"
 
 export const BarProject = () => {
     const dispatch = useAppDispatch();
