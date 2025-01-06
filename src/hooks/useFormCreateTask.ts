@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../store/store";
 import { Project } from "../../types/project";
@@ -6,6 +6,7 @@ import { editTasks } from "../store/projects/projectsSlice";
 import { Task } from "../../types/task";
 import { DifficultyTask, PriorityTask } from "../../types/states";
 import { v4 as uuidv4 } from 'uuid';
+import { changeModal } from "../store/projects/modalSlice";
 interface formValues {
     title: string;
     description: string;
@@ -19,7 +20,9 @@ interface props {
 
 export const useFormCreateTask = ({ currentProject }: props) => {
     const dispatch = useAppDispatch();
-    const { register, handleSubmit } = useForm<formValues>()
+    const { register, handleSubmit } = useForm<formValues>();
+    
+    const onExit = () => dispatch(changeModal("none"));
 
     const [priority, setPriority] = useState<PriorityTask>("low");
     const [difficulty, setDifficulty] = useState<DifficultyTask>("easy");
@@ -35,8 +38,14 @@ export const useFormCreateTask = ({ currentProject }: props) => {
             id: uuidv4()
         }
 
-        dispatch( editTasks({ idProject: id, tasks: [...tasks, formatTask] }) )
+        dispatch( editTasks({ idProject: id, tasks: [...tasks, formatTask] }) );
+        onExit();
     }
+
+    useEffect(() => {
+        document.body.style.overflow = "hidden";
+        return () => { document.body.style.overflow = "auto" }
+    }, [])
 
     return {
         register,
@@ -46,5 +55,6 @@ export const useFormCreateTask = ({ currentProject }: props) => {
         difficulty, setDifficulty,
 
         onSubmit,
+        onExit,
     }
 }

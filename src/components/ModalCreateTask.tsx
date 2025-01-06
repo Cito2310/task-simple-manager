@@ -11,11 +11,12 @@ export const ModalCreateTask = ({ project }: props) => {
         handleSubmit, onSubmit, 
         register, 
         difficulty, setDifficulty, 
-        priority, setPriority
+        priority, setPriority,
+        onExit
     } = useFormCreateTask({ currentProject: project });
 
     return (<>
-        <div className="w-screen h-screen absolute z-10 top-0 left-0 bg-[#000000d0]"></div>
+        <div className="fixed w-screen h-screen z-10 top-0 left-0 bg-[#000000d0]"></div>
 
         <div className="
         translate-x-[-50%] left-[50%] top-[100px] z-20
@@ -27,7 +28,7 @@ export const ModalCreateTask = ({ project }: props) => {
                     Agregar Nueva Tarea
                 </h2>
 
-                <ButtonExit />
+                <ButtonExit onClick={onExit} />
             </div>
 
             <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>

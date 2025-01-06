@@ -2,7 +2,7 @@ import { ButtonExit, ButtonModal, InputText } from "./modal"
 import { useCreateProject } from "../hooks/useCreateProject";
 
 export const ModalCreateProject = () => {
-    const { handleSubmit, onSubmit, register } = useCreateProject();
+    const { handleSubmit, onSubmit, register, onExit } = useCreateProject();
 
     return (<>
         <div className="w-screen h-screen absolute z-10 top-0 left-0 bg-[#000000d0]"></div>
@@ -17,15 +17,13 @@ export const ModalCreateProject = () => {
                     Nuevo Proyecto
                 </h2>
 
-                <ButtonExit />
+                <ButtonExit onClick={onExit} />
             </div>
 
             <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
                 <InputText register={register("title")} placeholder="Título del Nuevo Proyecto" type="input" />
-        
-                <ButtonModal
-                    label="Agregar Tarea"
-                />
+
+                <ButtonModal label="Agregar Tarea"/>
             </form>
 
         </div>
