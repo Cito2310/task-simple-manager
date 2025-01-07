@@ -1,6 +1,7 @@
 import { Task } from "../../types/task";
+import { setSelectedTask } from "../store/projects/generalSlice";
 import { changeModal } from "../store/projects/modalSlice";
-import { editTaskWithId, setSelectedTask } from "../store/projects/projectsSlice";
+import { editTaskWithId } from "../store/projects/projectsSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
 
 export const useCardTask = (task: Task) => {

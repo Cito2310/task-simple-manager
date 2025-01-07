@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { ButtonExit } from "./ButtonExit";
 import { useAppDispatch } from "../../store/store";
-import { turnBlockKeypress } from "../../store/projects/projectsSlice";
+import { turnBlockKeypress } from "../../store/projects/generalSlice";
 
 interface props {
     children: JSX.Element | JSX.Element[] | string;

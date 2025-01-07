@@ -6,24 +6,20 @@ import { Task } from '../../../types/task';
 interface ProjectsState {
     projects: Project[];
     currentProject: Project | null;
-    selectedTask: Task | null;
     status: {
         existProjects: boolean;
         isLoading: boolean;
         loadingInitialData: boolean;
-        blockKeypress: boolean;
     }
 }
 
 const initialState: ProjectsState = {
     projects: [],
     currentProject: null,
-    selectedTask: null,
     status: {
         existProjects: false,
         isLoading: false,
         loadingInitialData: false,
-        blockKeypress: false,
     }
 }
 
@@ -31,26 +27,10 @@ export const projectsSlice = createSlice({
     name: "projects",
     initialState,
     reducers: {
-
-
-
-        turnBlockKeypress: (state) => {
-            state.status.blockKeypress = !state.status.blockKeypress
-        },
-
-
         setCurrentProject: (state, action: {payload: string}) => {
             const findProject = state.projects.find( project => project.id === action.payload );
             state.currentProject = findProject || null;
         },
-
-
-
-        setSelectedTask: (state, action: {payload: Task}) => {
-            state.selectedTask = action.payload;
-        },
-
-
 
 
         loadingInitialData: (state, action: {payload: {projects: Project[], currentProject: Project | null}}) => {
@@ -59,8 +39,6 @@ export const projectsSlice = createSlice({
             state.status.loadingInitialData = true;
             if ( action.payload.projects.length > 0 ) state.status.existProjects = true;
         },
-
-
 
 
         createProject: (state, action: { payload: {
@@ -72,8 +50,6 @@ export const projectsSlice = createSlice({
         },
 
 
-
-
         deleteProject: (state, action: { payload: {
             id: string;
         } }) => {
@@ -81,8 +57,6 @@ export const projectsSlice = createSlice({
 
             if ( state.projects.length === 0 ) state.status.existProjects = false;
         },
-
-
 
 
         editTasks: (state, action: { payload: {
@@ -96,8 +70,6 @@ export const projectsSlice = createSlice({
             state.currentProject!.tasks = action.payload.tasks;
             state.projects[projectSelectedIndex].tasks = action.payload.tasks;
         },
-
-
 
 
         editTaskWithId: (state, action: { payload: {
@@ -114,7 +86,6 @@ export const projectsSlice = createSlice({
 
             state.currentProject = projectSelect || null;
         }
-
     }
 
 })
@@ -127,7 +98,5 @@ export const {
     editTasks,
     setCurrentProject,
     editTaskWithId,
-    setSelectedTask,
-    turnBlockKeypress,
 
 } = projectsSlice.actions;

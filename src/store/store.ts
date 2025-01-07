@@ -2,11 +2,13 @@ import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
 import { configureStore } from "@reduxjs/toolkit";
 import { projectsSlice } from './projects/projectsSlice';
 import { modalSlice } from './projects/modalSlice';
+import { generalSlice } from './projects/generalSlice';
 
 export const store = configureStore({
     reducer: {
         projects: projectsSlice.reducer,
         modal: modalSlice.reducer,
+        general: generalSlice.reducer
     }
 })
 
