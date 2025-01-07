@@ -1,6 +1,5 @@
-import { ButtonModal, InputText } from "./modal"
+import { ButtonModal, InputText, ModalLayout } from "./modal"
 import { useCreateProject } from "../hooks/useCreateProject";
-import { ModalLayout } from "./modal/ModalLayout";
 
 export const ModalCreateProject = () => {
     const { handleSubmit, onSubmit, register, onExit } = useCreateProject();

@@ -1,14 +1,9 @@
-import { changeModal } from "../store/projects/modalSlice";
-import { setCurrentProject } from "../store/projects/projectsSlice";
-import { useAppDispatch, useAppSelector } from "../store/store"
-import { ButtonProject } from "./barProject/ButtonProject"
+import { useBarProject } from "../hooks/useBarProject";
+import { ButtonProject } from "./barProjectComponents"
 
 export const BarProject = () => {
-    const dispatch = useAppDispatch();
-    const { projects, currentProject } = useAppSelector( state => state.projects );
+    const { currentProject, onModalCreateProject, onSetProject, projects } = useBarProject();
 
-    const onModalCreateProject = () => dispatch( changeModal("create-project") );
-    const onSetProject = (id: string) => dispatch( setCurrentProject(id) );
     return (
         <div className="flex items-center space-x-2 mb-4">
             <div className="inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground">

@@ -1,8 +1,6 @@
 import { Task } from "../../types/task"
 import { useCardTask } from "../hooks/useCardTask";
-import { BadgeTask } from "./cardTask/BadgeTask";
-import { ButtonCheck } from "./cardTask/ButtonCheck"
-import { ButtonEditTrash } from "./cardTask/ButtonEditTrash";
+import { BadgeTask, ButtonCheck, ButtonEditTrash } from "./cardTaskComponents";
 
 interface props {
     task: Task

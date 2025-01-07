@@ -1,8 +1,7 @@
-import { ButtonModal } from "./modal"
-import { Project } from "../../types/project";
-import { ModalLayout } from "./modal/ModalLayout";
-import { Task } from "../../types/task";
+import { ButtonModal, ModalLayout } from "./modal"
 import { useFormDeleteTask } from "../hooks/useFormDeleteTask";
+import { Project } from "../../types/project";
+import { Task } from "../../types/task";
 
 interface props {
     project: Project;

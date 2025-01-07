@@ -1,6 +1,5 @@
 export * from "./BarFilterState";
 export * from "./BarProject";
-export * from "./barProject/ButtonProject";
 export * from "./CardTask";
 export * from "./ModalCreateProject";
 export * from "./ModalCreateTask";
