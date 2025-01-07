@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { ButtonExit } from "./ButtonExit";
+import { useAppDispatch } from "../../store/store";
+import { turnBlockKeypress } from "../../store/projects/projectsSlice";
 
 interface props {
     children: JSX.Element | JSX.Element[] | string;
@@ -8,10 +10,17 @@ interface props {
 }
 
 export const ModalLayout = ({ children, title, onExit }: props) => {
+    const dispatch = useAppDispatch();
     useEffect(() => {
         document.body.style.overflow = "hidden";
-        return () => { document.body.style.overflow = "auto" }
+        dispatch(turnBlockKeypress());
+
+        return () => { 
+            document.body.style.overflow = "auto"; 
+            dispatch(turnBlockKeypress())
+        }
     }, [])
+
 
     return (<>
         <div className="w-screen h-screen fixed z-10 top-0 left-0 bg-[#000000d0]"></div>

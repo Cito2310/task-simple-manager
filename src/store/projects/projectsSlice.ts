@@ -11,6 +11,7 @@ interface ProjectsState {
         existProjects: boolean;
         isLoading: boolean;
         loadingInitialData: boolean;
+        blockKeypress: boolean;
     }
 }
 
@@ -22,6 +23,7 @@ const initialState: ProjectsState = {
         existProjects: false,
         isLoading: false,
         loadingInitialData: false,
+        blockKeypress: false,
     }
 }
 
@@ -31,6 +33,10 @@ export const projectsSlice = createSlice({
     reducers: {
 
 
+
+        turnBlockKeypress: (state) => {
+            state.status.blockKeypress = !state.status.blockKeypress
+        },
 
 
         setCurrentProject: (state, action: {payload: string}) => {
@@ -122,5 +128,6 @@ export const {
     setCurrentProject,
     editTaskWithId,
     setSelectedTask,
+    turnBlockKeypress,
 
 } = projectsSlice.actions;
