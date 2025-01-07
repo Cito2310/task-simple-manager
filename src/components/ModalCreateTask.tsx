@@ -17,7 +17,7 @@ export const ModalCreateTask = ({ project }: props) => {
 
     return ( <ModalLayout title="Agregar Nueva Tarea" onExit={onExit}>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-            <InputText register={register("title")} placeholder="Título de la tarea" type="input" />
+            <InputText autofocus register={register("title")} placeholder="Título de la tarea" type="input" />
 
             <InputText register={register("description")} placeholder="Descripción de la tarea" type="textarea" />
         

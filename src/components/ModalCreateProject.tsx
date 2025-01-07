@@ -6,7 +6,7 @@ export const ModalCreateProject = () => {
 
     return ( <ModalLayout title="Nuevo Proyecto" onExit={onExit}>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-            <InputText register={register("title")} placeholder="Título del Nuevo Proyecto" type="input" />
+            <InputText autofocus register={register("title")} placeholder="Título del Nuevo Proyecto" type="input" />
 
             <ButtonModal label="Agregar Tarea"/>
         </form>

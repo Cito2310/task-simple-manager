@@ -18,7 +18,7 @@ export const ModalEditTask = ({ project, selectedTask }: props) => {
 
     return ( <ModalLayout title="Editar Tarea" onExit={onExit}>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-            <InputText register={register("title")} placeholder="Título de la tarea" type="input" />
+            <InputText autofocus register={register("title")} placeholder="Título de la tarea" type="input" />
 
             <InputText register={register("description")} placeholder="Descripción de la tarea" type="textarea" />
         
