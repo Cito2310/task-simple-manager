@@ -1,4 +1,4 @@
-import { useBarProject } from "../hooks/useBarProject";
+import { useBarProject } from "../hooks";
 import { ButtonProject } from "./barProjectComponents"
 
 export const BarProject = () => {

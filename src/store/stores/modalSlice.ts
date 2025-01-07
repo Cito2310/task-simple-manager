@@ -1,5 +1,5 @@
-import { Modal } from './../../../types/modal';
 import { createSlice } from '@reduxjs/toolkit';
+import { Modal } from '../../../types';
 
 interface ModalState {
     currentModal: Modal

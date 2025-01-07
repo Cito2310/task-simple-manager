@@ -1,6 +1,4 @@
-import { changeModal } from "../store/projects/modalSlice";
-import { setCurrentProject } from "../store/projects/projectsSlice";
-import { useAppDispatch, useAppSelector } from "../store/store";
+import { useAppDispatch, useAppSelector, changeModal, setCurrentProject } from "../store";
 
 export const useBarProject = () => {
     const dispatch = useAppDispatch();

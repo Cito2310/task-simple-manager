@@ -1,4 +1,4 @@
-import { DifficultyTask, PriorityTask, StateTask } from './states';
+import { DifficultyTask, PriorityTask, StateTask } from './';
 
 export interface Task {
     title: string;

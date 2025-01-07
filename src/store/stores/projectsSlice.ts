@@ -1,7 +1,6 @@
-import { Project } from './../../../types/project';
 import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-import { Task } from '../../../types/task';
+import { Project, Task } from '../../../types';
 
 interface ProjectsState {
     projects: Project[];

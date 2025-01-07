@@ -1,6 +1,6 @@
-import { Project } from "../../types/project"
-import { filterTasks } from "../helpers/filterTasks";
+import { filterTasks } from "../helpers";
 import { CardTask } from "./CardTask";
+import { Project } from "../../types"
 
 interface props {
     currentProject: null | Project;

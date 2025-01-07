@@ -1,7 +1,6 @@
 import { ButtonModal, InputRadio, InputText, ModalLayout } from "./modal"
-import { useFormEditTask } from "../hooks/useFormEditTask";
-import { Project } from "../../types/project";
-import { Task } from "../../types/task";
+import { useFormEditTask } from "../hooks";
+import { Project, Task } from "../../types";
 
 interface props {
     project: Project;

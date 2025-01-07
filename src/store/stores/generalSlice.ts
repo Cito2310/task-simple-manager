@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Task } from '../../../types/task';
+import { Task } from '../../../types';
 
 interface GeneralState {
     selectedTask: Task | null;

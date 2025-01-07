@@ -1,6 +1,5 @@
 import { useEffect } from "react"
-import { useAppDispatch, useAppSelector } from "../../store/store"
-import { loadingInitialData } from "../../store/projects/projectsSlice";
+import { useAppDispatch, useAppSelector, loadingInitialData } from "../../store"
 
 export const useManagerData = () => {
     const keyDataProjects = "data-projects";

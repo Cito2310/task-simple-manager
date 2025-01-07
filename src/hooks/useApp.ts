@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { useManagerData } from "./internal/useManagerData";
-import { useAppDispatch, useAppSelector } from "../store/store";
-import { changeModal } from "../store/projects/modalSlice";
-import { useKeybind } from "./internal/useKeybind";
+import { useAppDispatch, useAppSelector, changeModal } from "../store";
+import { useKeybind, useManagerData } from "./internal";
 
 export const useApp = () => {
     useManagerData();   // customHook que gestiona el guardado y la carga de los datos

@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useAppDispatch } from "../store/store";
-import { Project } from "../../types/project";
-import { editTasks } from "../store/projects/projectsSlice";
-import { Task } from "../../types/task";
-import { DifficultyTask, PriorityTask } from "../../types/states";
-import { changeModal } from "../store/projects/modalSlice";
+import { useAppDispatch, changeModal, editTasks } from "../store";
+import { Project, Task, DifficultyTask, PriorityTask } from "../../types";
+
 interface formValues {
     title: string;
     description: string;

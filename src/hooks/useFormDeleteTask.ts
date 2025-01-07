@@ -1,8 +1,5 @@
-import { useAppDispatch } from "../store/store";
-import { Project } from "../../types/project";
-import { editTasks } from "../store/projects/projectsSlice";
-import { Task } from "../../types/task";
-import { changeModal } from "../store/projects/modalSlice";
+import { useAppDispatch, editTasks, changeModal } from "../store";
+import { Project, Task } from "../../types";
 
 interface props {
     currentProject: Project;

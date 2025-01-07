@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/store";
-import { changeModal } from "../../store/projects/modalSlice";
+import { useAppDispatch, useAppSelector, changeModal } from "../../store";
 
 export const useKeybind = () => {
     const dispatch = useAppDispatch();

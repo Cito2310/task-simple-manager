@@ -1,6 +1,6 @@
 import { ButtonModal, InputRadio, InputText, ModalLayout } from "./modal"
-import { useFormCreateTask } from "../hooks/useFormCreateTask";
-import { Project } from "../../types/project";
+import { useFormCreateTask } from "../hooks";
+import { Project } from "../../types";
 
 interface props {
     project: Project;

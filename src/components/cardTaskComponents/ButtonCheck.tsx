@@ -1,4 +1,4 @@
-import { StateTask } from "../../../types/states"
+import { StateTask } from "../../../types"
 
 interface props {
     state: StateTask;

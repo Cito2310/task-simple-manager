@@ -1,7 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useAppDispatch } from "../store/store";
-import { createProject } from "../store/projects/projectsSlice";
-import { changeModal } from "../store/projects/modalSlice";
+import { useAppDispatch, createProject, changeModal } from "../store";
 
 export const useCreateProject = () => {
     const dispatch = useAppDispatch();
